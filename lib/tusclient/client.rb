@@ -8,6 +8,10 @@ module Tusclient
       @http = Net::HTTP.start(@server_uri.host, @server_uri.port, http_params)
     end
 
+    def upload(file_path)
+      # TODO: check if the server supports 'create' (in ['tus-extension'])
+    end
+
     private
 
     def read_file(file_path)
