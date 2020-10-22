@@ -6,10 +6,13 @@ module Tusclient
     def initialize(url, http_params: {})
       @server_uri = URI.parse url
       @http = Net::HTTP.start(@server_uri.host, @server_uri.port, http_params)
+
+      server_options = @http.options(@server_uri.request_uri)
+      @server = Server.new(server_options)
     end
 
     def upload(file_path)
-      # TODO: check if the server supports 'create' (in ['tus-extension'])
+      @server.supports_create? || raise(Error, 'the server does not support file creation')
     end
 
     private
