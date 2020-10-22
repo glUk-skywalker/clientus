@@ -24,7 +24,7 @@ module TusClient
       UploadFile.new(name, size, data)
     end
 
-    def create_file(file, additional_headers)
+    def create_file(file, additional_headers: {})
       # TODO: refactor this
       request = Net::HTTP::Post.new(@server_uri.request_uri)
 
