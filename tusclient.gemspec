@@ -2,7 +2,7 @@ require_relative 'lib/tusclient/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "tusclient"
-  spec.version       = Tusclient::VERSION
+  spec.version       = TusClient::VERSION
   spec.authors       = ["Oleg Ivanov"]
   spec.email         = ["gluk.main+github@gmail.com"]
 

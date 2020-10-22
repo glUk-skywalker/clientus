@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Tusclient
+module TusClient
   # Holds server info
   class Server
     attr_reader :tus_version

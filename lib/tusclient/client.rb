@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Tusclient
+module TusClient
   # Client that transfers files. The main class.
   class Client
     def initialize(url, http_params: {})
