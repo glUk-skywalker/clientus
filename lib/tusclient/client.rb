@@ -11,7 +11,7 @@ module TusClient
       @server = Server.new(server_options)
     end
 
-    def upload(file_path)
+    def upload(file_path, additional_headers: {})
       @server.supports_create? || raise(Error, 'the server does not support file creation')
     end
 
