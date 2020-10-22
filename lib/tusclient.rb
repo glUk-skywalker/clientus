@@ -4,3 +4,4 @@ require 'net/http'
 
 require 'tusclient/version'
 require 'tusclient/client'
+require 'tusclient/server'
