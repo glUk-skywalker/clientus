@@ -23,6 +23,27 @@ module Tusclient
       name = File.basename(file_path)
       UploadFile.new(name, size, data)
     end
+
+    def create_file(file, additional_headers)
+      # TODO: refactor this
+      request = Net::HTTP::Post.new(@server_uri.request_uri)
+
+      request['Content-Length'] = 0
+      request['Upload-Length'] = file.size
+      request['Tus-Resumable'] = @server.tus_version
+
+      request['Cookie'] = additional_headers['Cookie']&.map { |k, v| "#{k}=#{v}"}.join(';')
+
+      request['Upload-Metadata'] = "filename #{file.encoded_name}"
+      additional_headers['Upload-Metadata']&.each do |k, v|
+        request['Upload-Metadata'] = [request['Upload-Metadata'], "#{k} #{v}"].join(',')
+      end
+
+      res = @http.request(request)
+      puts res['Location']
+      return if res.is_a?(Net::HTTPCreated)
+
+      raise(Error, "bad resonse type: #{res.class}; body: #{res.body}")
     end
   end
 end
