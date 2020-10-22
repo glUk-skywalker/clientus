@@ -18,7 +18,11 @@ module Tusclient
     private
 
     def read_file(file_path)
-      File.open(file_path, 'rb', &:read)
+      data = File.open(file_path, 'rb', &:read)
+      size = File.size(file_path)
+      name = File.basename(file_path)
+      UploadFile.new(name, size, data)
+    end
     end
   end
 end
