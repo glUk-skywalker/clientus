@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TusClient
+module Clientus
   # Client that transfers files. The main class.
   class Client
     CHUNK_SIZE = 100 * 1024 * 1024 # 100MB
@@ -49,7 +49,7 @@ module TusClient
       request['Upload-Length'] = file.size
       request['Tus-Resumable'] = @server.tus_version
       request['Upload-Metadata'] = "filename #{file.encoded_name}"
-      TusClient.adjust_headers(request, additional_headers)
+      Clientus.adjust_headers(request, additional_headers)
 
       res = @http.request(request)
       return res['Location'] if res.is_a?(Net::HTTPCreated)
@@ -63,7 +63,7 @@ module TusClient
       request['Upload-Offset'] = offset
       request['Tus-Resumable'] = @server.tus_version
       request.body = chunk
-      TusClient.adjust_headers(request, additional_headers)
+      Clientus.adjust_headers(request, additional_headers)
 
       @http.request(request)
     end

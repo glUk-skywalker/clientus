@@ -2,6 +2,6 @@ AllCops:
   TargetRubyVersion: 2.4.6
   Exclude:
   - bin/*
-  - tusclient.gemspec
+  - clientus.gemspec
 Layout/EmptyLineAfterGuardClause:
   Enabled: false

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TusClient
+module Clientus
   # Holds file information
   class UploadFile
     attr_reader :name, :size, :data

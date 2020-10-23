@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module TusClient
+module Clientus
   class Error < StandardError; end
 end

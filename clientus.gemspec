@@ -1,8 +1,8 @@
-require_relative 'lib/tusclient/version'
+require_relative 'lib/clientus/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "tusclient"
-  spec.version       = TusClient::VERSION
+  spec.name          = "clientus"
+  spec.version       = Clientus::VERSION
   spec.authors       = ["Oleg Ivanov"]
   spec.email         = ["gluk.main+github@gmail.com"]
 
@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org/"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "<none yet>"
