@@ -8,14 +8,14 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{A simple client for the Tus protocol}
   spec.description   = %q{A client for the Tus protocol enabling file uploads}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/glUk-skywalker/clientus"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org/"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "<none yet>"
+  spec.metadata["source_code_uri"] = "https://github.com/glUk-skywalker/clientus"
   spec.metadata["changelog_uri"] = "<none yet>"
 
   # Specify which files should be added to the gem when it is released.
