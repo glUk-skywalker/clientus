@@ -30,6 +30,7 @@ module Clientus
 
         start_offset = end_offset + 1
       end
+      terminate!(location, additional_headers)
     end
 
     private
@@ -67,5 +68,13 @@ module Clientus
 
       @http.request(request)
     end
+
+    def terminate!(uri, additional_headers)
+      @server.supports_termination? || raise(Error, 'the server does not support termination')
+      request = Net::HTTP::Delete.new(uri)
+      Clientus.adjust_headers(request, additional_headers)
+      @http.request(request)
+    end
+
   end
 end
