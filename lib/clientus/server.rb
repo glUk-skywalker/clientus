@@ -11,8 +11,10 @@ module Clientus
       raise(Error, 'The server did not provide the tus version.') unless @tus_version
     end
 
-    def supports_create?
-      @operations.include?('creation')
+    def raise_if_unsupported(extension)
+      ext = extension.to_s
+      return if @operations.include?(ext)
+      raise(Error, "The server does not support #{ext}")
     end
   end
 end

@@ -14,7 +14,9 @@ module Clientus
     end
 
     def upload(file_path, additional_headers: {})
-      @server.supports_create? || raise(Error, 'the server does not support file creation')
+      # checking here instead of checking in 'create_file' to avoid wasting time
+      # for needless file reading
+      @server.raise_if_unsupported(:creation)
 
       file = read_file(file_path)
 
@@ -70,11 +72,17 @@ module Clientus
     end
 
     def terminate!(uri, additional_headers)
-      @server.supports_termination? || raise(Error, 'the server does not support termination')
+      @server.raise_if_unsupported(:termination)
       request = Net::HTTP::Delete.new(uri)
       Clientus.adjust_headers(request, additional_headers)
       @http.request(request)
     end
 
+    def default_request(method, uri)
+      request_class = Object.const_get "Net::HTTP::#{method.to_s.capitalize}"
+      request = request_class.new(uri)
+      request['Tus-Resumable'] = @server.tus_version
+      request
+    end
   end
 end
