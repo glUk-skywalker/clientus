@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    clientus (0.1.0.dev)
+    clientus (0.1.1.dev)
 
 GEM
   remote: https://rubygems.org/
